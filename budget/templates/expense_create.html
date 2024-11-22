@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block main_block %}
+    <style>
+        body {
+            background-color: #f8f9fa;
+            height: 100vh;
+        }
+    </style>
+
+    <div class="d-flex align-items-center justify-content-center" style="height: 100%;">
+        <div class="card shadow-lg p-4" style="width: 600px; max-width: 90%;">
+            <div class="card-body">
+                <h2 class="text-center mb-4">ADD YOUR EXPENSE {{request.user}}</h2>
+
+                <!-- Form -->
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <!-- Title Field -->
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="title" name="title" placeholder="Enter expense title" required>
+                    </div>
+
+                    <!-- Amount Field -->
+                    <div class="mb-3">
+                        <label for="amount" class="form-label">Amount</label>
+                        <input type="number" class="form-control" id="amount" name="amount" placeholder="Enter amount" required>
+                    </div>
+
+                    <!-- Category Field -->
+                    <div class="mb-3">
+                        <label for="category" class="form-label">Category</label>
+                        <select class="form-select" id="category" name="category" required>
+                            <option selected disabled>Select category</option>
+                            <option value="food">Food</option>
+                            <option value="travel">Travel</option>
+                            <option value="health">Health</option>
+                            <option value="other">Others</option>
+                        </select>
+                    </div>
+
+                    <!-- User Field -->
+                    <!-- <div class="mb-3">
+                        <label for="user" class="form-label">User</label>
+                        <input type="text" class="form-control" id="user" name="user" placeholder="Enter user name" required>
+                    </div> -->
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary w-100 mt-4">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

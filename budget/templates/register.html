@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Expense Manager</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea, #764ba2); /* Gradient background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full height for centering */
+            margin: 0;
+            font-family: Arial, sans-serif; /* Font style */
+        }
+
+        .welcome-title {
+            position: absolute;
+            top: 20px;
+            text-align: center;
+            width: 100%;
+            font-size: 2rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        .register-container {
+            max-width: 400px; /* Max width for the form */
+            width: 100%; /* Full width */
+            background: white; /* White background for the form */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+            padding: 40px 30px; /* Padding around the form */
+        }
+
+        .register-container h1 {
+            margin-bottom: 20px; /* Space below the heading */
+            text-align: center; /* Center the heading */
+            font-size: 28px; /* Adjusted font size */
+            font-weight: 700; /* Bolder font weight */
+            color: #333; /* Darker text color */
+        }
+
+        .form-control {
+            border-radius: 5px; /* Rounded edges for inputs */
+            margin-bottom: 15px; /* Space between inputs */
+            padding: 10px; /* Padding inside inputs */
+            width: 100%; /* Full width for inputs */
+            border: 1px solid #ddd; /* Light gray border */
+            box-sizing: border-box; /* Ensure padding and border are included in the total width and height */
+            font-size: 16px; /* Font size for inputs */
+        }
+
+        .form-control:focus {
+            border-color: #764ba2; /* Border color on focus */
+            outline: none; /* Remove default outline */
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2); /* Gradient background for button */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Rounded edges for button */
+            color: white; /* White text */
+            padding: 10px 15px; /* Padding inside button */
+            cursor: pointer; /* Pointer cursor on hover */
+            width: 100%; /* Full width for button */
+            font-size: 16px; /* Font size for button */
+            margin-top: 10px; /* Space above the button */
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #5a67d8, #6b46c1); /* Darker gradient on hover */
+        }
+
+        .text-center {
+            margin-top: 10px; /* Space above the text */
+            text-align: center; /* Center the text */
+        }
+
+        .text-center a {
+            color: #667eea; /* Link color */
+            text-decoration: none; /* Remove underline */
+            font-weight: bold; /* Bold link text */
+        }
+
+        .text-center a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-title">Welcome to Expense Manager</div>
+    <div class="register-container">
+        <h1>Create an Account</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn-primary" type="submit">Sign Up</button>
+        </form>
+        <div class="text-center">
+            <a href="{%url 'signin'%}">Already have an account? Login</a>
+        </div>
+    </div>
+</body>
+</html>

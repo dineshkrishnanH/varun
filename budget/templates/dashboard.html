@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+
+{% block main_block %}
+    <style>
+        body {
+            background-color: #f8f9fa; /* Off-white background */
+        }
+        .expense-summary {
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .expense-card {
+            background: linear-gradient(135deg, #42a5f5, #478ed1);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+        .total-expense-title {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .total-expense-amount, .category-expense {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+        .expense-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        .chart-container {
+            background-color: white; /* White background for chart section */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            margin-top: 20px;
+            text-align: center;
+        }
+        /* Adjust the chart size */
+        #myChart {
+            max-width: 300px; /* Width of the chart */
+            max-height: 300px; /* Height of the chart */
+            margin: 0 auto;
+        }
+    </style>
+
+    <!-- Expense Summary Section -->
+    <div class="container d-flex justify-content-center align-items-center expense-summary">
+        <div class="col-md-8 col-lg-6">
+            <div class="expense-card">
+                <div class="expense-icon">
+                    <i class="bi bi-cash-stack"></i>
+                </div>
+                <div class="total-expense-title">Total Expenses Tracked</div>
+                <div class="total-expense-count">{{ total_expense_count }}</div>
+
+                <div class="total-expense-title mt-4">Total Amount Spent</div>
+                <div class="total-expense-amount">₹{{ total_expense_amount }}</div>
+
+                <div class="total-expense-title mt-4">Category-wise Expenses</div>
+                <div class="category-expense">Food: ₹{{ food_expense }}</div>
+                <div class="category-expense">Travel: ₹{{ travel_expense }}</div>
+                <div class="category-expense">Health: ₹{{ health_expense }}</div>
+                <div class="category-expense">Others: ₹{{ others_expense }}</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Category Expense Chart Section -->
+    <div class="container chart-container">
+        <h4>Category Summary</h4>
+        <canvas id="myChart"></canvas>
+    </div>
+{% endblock %}
+
+{% block script_block %}
+<script>
+    const ctx = document.getElementById('myChart');
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Food', 'Travel', 'Health', 'Others'],
+            datasets: [{
+                label: 'Expenses by Category',
+                data: [
+                    {{ food_expense }},
+                    {{ travel_expense }},
+                    {{ health_expense }},
+                    {{ others_expense }}
+                ],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}

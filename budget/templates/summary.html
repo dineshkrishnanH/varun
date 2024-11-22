@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block main_block %}
+    <style>
+        body {
+            background-color: #f0f2f5;
+        }
+        .expense-summary {
+            margin-top: 100px;
+        }
+        .expense-card {
+            background: linear-gradient(135deg, #42a5f5, #478ed1);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+        .total-expense-title {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .total-expense-amount, .category-expense {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+        .expense-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+    </style>
+
+    <div class="container d-flex justify-content-center align-items-center expense-summary">
+        <div class="col-md-8 col-lg-6">
+            <div class="expense-card">
+                <div class="expense-icon">
+                    <i class="bi bi-cash-stack"></i>
+                </div>
+                <div class="total-expense-title">Total Expenses Tracked</div>
+                <div class="total-expense-count">{{ total_expense_count }}</div>
+
+                <div class="total-expense-title mt-4">Total Amount Spent</div>
+                <div class="total-expense-amount">₹{{ total_expense_amount }}</div>
+
+                <div class="total-expense-title mt-4">Category-wise Expenses</div>
+                <div class="category-expense">Food: ₹{{ food_expense }}</div>
+                <div class="category-expense">Travel: ₹{{ travel_expense }}</div>
+                <div class="category-expense">Health: ₹{{ health_expense }}</div>
+                <div class="category-expense">Others: ₹{{ others_expense }}</div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}

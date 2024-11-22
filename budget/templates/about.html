@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+
+{% block main_block %}
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: rgb(231, 100, 100);
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            width: 100%;
+            margin: auto; /* Center container */
+        }
+
+        .top-section, .bottom-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 40px; /* Increased padding for more space */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+        }
+
+        .top-section img, 
+        .bottom-section img {
+            max-width: 40%;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .text-content {
+            max-width: 55%;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        p, ul {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        .btn-back {
+            background-color: white;
+            color: #764ba2;
+            font-weight: bold;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+
+        .btn-back:hover {
+            background-color: #764ba2;
+            color: white;
+        }
+
+        /* Ensuring the sections have adequate spacing for small screens */
+        @media (max-width: 768px) {
+            .top-section, .bottom-section {
+                flex-direction: column; /* Stack elements vertically on smaller screens */
+                align-items: flex-start; /* Align to start */
+            }
+
+            .top-section img, 
+            .bottom-section img {
+                max-width: 100%; /* Full width on small screens */
+                margin-top: 15px; /* Space above image */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Top Section: Mission -->
+        <div class="top-section">
+            <div class="text-content">
+                <h2>Our Mission</h2>
+                <p>
+                    At <strong>Expense Manager</strong>, our mission is to empower individuals to take control of their 
+                    finances with an easy-to-use and efficient platform. We aim to simplify the way users manage their 
+                    income and expenses, helping them achieve their financial goals with better insights.
+                </p>
+                <p>
+                    Whether it's tracking daily expenses, setting a monthly budget, or generating reports, Expense Manager 
+                    ensures users have the tools they need to stay financially organized.
+                </p>
+            </div>
+            <img src="https://media.licdn.com/dms/image/D5612AQGplp7JKG6Iiw/article-cover_image-shrink_720_1280/0/1673950361361?e=2147483647&v=beta&t=NxzErCoXqQ-xwkHJZZkKGKYNA21hJh3oNMUJzNKQr9M" alt="Technology Stack Image">
+        </div>
+
+        <!-- Bottom Section: Technologies Used -->
+        <div class="bottom-section">
+            <img src="https://openwebsolutions.in/blog/wp-content/uploads/2019/02/186096_6b71_14.jpg" alt="Technology Stack Image">
+            <div class="text-content">
+                <h2>Technologies Used</h2>
+                <ul>
+                    <li><strong>Python Django:</strong> Handles backend logic, routing, and database interactions.</li>
+                    <li><strong>SQLite:</strong> Stores user data and expense records efficiently.</li>
+                    <li><strong>HTML5 & CSS3:</strong> Ensures a responsive, user-friendly interface.</li>
+                    <li><strong>Bootstrap 5:</strong> Provides styling and mobile responsiveness.</li>
+                    <li><strong>JavaScript (ES6):</strong> Adds interactivity to the platform.</li>
+                </ul>
+                <a href="{% url 'exp-list' %}" class="btn-back">Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+        {% endblock %} 
